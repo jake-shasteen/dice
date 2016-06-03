@@ -137,6 +137,7 @@
           <div class="d6-face" id="six">6</div>
         </div> <!-- End d6 clsas -->
         <button id="js-roll" type="submit">Roll</button>
+        <p id="js-result">  </p>
       </div>
     </div> <!-- End container class -->
   </body>
@@ -150,6 +151,7 @@
       });
       $('.d6').removeClass( 'spin' );
       $('.d6').addClass( animations[rand] );
+      $('#js-result').text( rand+1 );
     });
   </script>
 </html>
