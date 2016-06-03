@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
     <style type="text/css">
+      @keyframes spin {
+        from { transform: rotateY( 0 ) rotateX( 0 ); }
+        to { transform: rotateY( 1turn ) rotateZ( 1turn ) }
+      }
       :root {
         background: #eee;
       }
@@ -17,38 +21,85 @@
       .container {
         width: 80%;
         margin: auto;
+        perspective: 800px;
+        text-align: center;
+      }
+      .box {
+        background: #ddd;
+        width: 400px;
+        height: 400px;
+        margin: auto;
+        box-shadow: 0 2px 6px #111;
+      }
+      #js-roll {
+        border-radius: 5px;
+        box-shadow: 0 2px 6px #111;
+        width: 100px;
+        height: 50px;
+        margin-top: 10px;
+      }
+      #js-roll:hover {
+        cursor: pointer;
       }
       .d6 {
-        perspective: 800px;
+        margin: 40px auto;
+        transform-style: preserve-3d;
+        transition: transform 2s ease-in-out;
+        width: 220px;
+        height: 220px;
+        animation: spin 10s infinite linear;
       }
       .d6-face {
-        margin: auto;
         background: #fff;
-        border: 1px solid;
-        border-radius: 15px;
+        border-radius: 5px;
         box-shadow: inset 0 0 15px #111;
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 100%;
         font-size: 50px;
         text-align: center;
         display: flex;
         justify-content:center;
         align-content:center;
         flex-direction:column;
-        transform: rotate3d( 1, 1, 1, 1rad );
+        position: absolute;
+      }
+      #one { /*front*/
+        transform: translateZ(110px);
+      }
+      #six { /*back*/
+        transform: translateZ(-110px);
+      }
+      #two { /*bottom*/
+        transform: translateZ(-110px) rotateX(270deg);
+        transform-origin: center bottom;
+      }
+      #five { /*top*/
+        transform: translateZ( -110px) rotateX(-270deg);
+        transform-origin: center top;
+      }
+      #three { /*left*/
+        transform: translateZ(-110px) rotateY(270deg);
+        transform-origin: center left;
+      }
+      #four { /*right*/
+        transform: translateZ(-110px) rotateY(-270deg);
+        transform-origin: center right;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="d6">
-        <div class="d6-face" id="one">1</div>
-        <div class="d6-face" id="two">2</div>
-        <div class="d6-face" id="three">3</div>
-        <div class="d6-face" id="four">4</div>
-        <div class="d6-face" id="five">5</div>
-        <div class="d6-face" id="six">6</div>
+      <div class="box">
+        <div class="d6">
+          <div class="d6-face" id="one">1</div>
+          <div class="d6-face" id="two">2</div>
+          <div class="d6-face" id="three">3</div>
+          <div class="d6-face" id="four">4</div>
+          <div class="d6-face" id="five">5</div>
+          <div class="d6-face" id="six">6</div>
         </div> <!-- End d6 clsas -->
+        <button id="js-roll" type="submit">Roll</button>
+      </div>
     </div> <!-- End container class -->
   </body>
   <script type="text/javascript"></script>
