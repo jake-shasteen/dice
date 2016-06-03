@@ -4,13 +4,52 @@
     <title>Demo</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <meta name="description" content="Demo project">
+    <meta name="description" content="Demo project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
     <style type="text/css">
       @keyframes spin {
         from { transform: rotateY( 0 ) rotateX( 0 ); }
         to { transform: rotateY( 1turn ) rotateZ( 1turn ) }
+      }
+      @keyframes to-one {
+        to { transform: rotateY( 0 ) rotateX( 0 ); }
+      }
+      @keyframes to-two {
+        to { transform: rotateX( 90deg ); }
+      }
+      @keyframes to-three {
+        to { transform: rotateY( 90deg ); }
+      }
+      @keyframes to-four {
+        to { transform: rotateY( -90deg ); }
+      }
+      @keyframes to-five {
+        to { transform: rotateX( -90deg ); }
+      }
+      @keyframes to-six {
+        to { transform: rotateY( 180deg ); }
+      }
+      .to-one {
+        animation: to-one 2s forwards linear;
+      }
+      .to-two {
+        animation: to-two 2s forwards linear;
+      }
+      .to-three {
+        animation: to-three 2s forwards linear;
+      }
+      .to-four {
+        animation: to-four 2s forwards linear;
+      }
+      .to-five {
+        animation: to-five 2s forwards linear;
+      }
+      .to-six {
+        animation: to-six 2s forwards linear;
+      }
+      .spin {
+        animation: spin 10s infinite linear;
       }
       :root {
         background: #eee;
@@ -47,7 +86,6 @@
         transition: transform 2s ease-in-out;
         width: 220px;
         height: 220px;
-        animation: spin 10s infinite linear;
       }
       .d6-face {
         background: #fff;
@@ -67,7 +105,7 @@
         transform: translateZ(110px);
       }
       #six { /*back*/
-        transform: translateZ(-110px);
+        transform: translateZ(-110px) rotateY(180deg);
       }
       #two { /*bottom*/
         transform: translateZ(-110px) rotateX(270deg);
@@ -90,7 +128,7 @@
   <body>
     <div class="container">
       <div class="box">
-        <div class="d6">
+        <div class="d6 spin">
           <div class="d6-face" id="one">1</div>
           <div class="d6-face" id="two">2</div>
           <div class="d6-face" id="three">3</div>
@@ -102,5 +140,16 @@
       </div>
     </div> <!-- End container class -->
   </body>
-  <script type="text/javascript"></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript">
+    $('#js-roll').on( 'click', function() {
+      var rand = Math.floor( Math.random() * 6 );
+      var animations = ['to-one', 'to-two', 'to-three', 'to-four', 'to-five', 'to-six'];
+      animations.forEach( function( animation ) {
+        $('.d6').removeClass( animation );
+      });
+      $('.d6').removeClass( 'spin' );
+      $('.d6').addClass( animations[rand] );
+    });
+  </script>
 </html>
