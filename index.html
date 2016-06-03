@@ -8,120 +8,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
     <style type="text/css">
-      @keyframes spin {
-        from { transform: rotateY( 0 ) rotateX( 0 ); }
-        to { transform: rotateY( 1turn ) rotateZ( 1turn ) }
+      @keyframes spin
+      {
+          from
+          {
+              transform: rotateY( 0 ) rotateX( 0 );
+          }
+          to
+          {
+              transform: rotateY( 1turn ) rotateZ( 1turn );
+          }
       }
-      @keyframes to-one {
-        to { transform: rotateY( 0 ) rotateX( 0 ); }
+      @keyframes to-one
+      {
+          to
+          {
+              transform: rotateY( 0 ) rotateX( 0 );
+          }
       }
-      @keyframes to-two {
-        to { transform: rotateX( 90deg ); }
+      @keyframes to-two
+      {
+          to
+          {
+              transform: rotateX( 90deg );
+          }
       }
-      @keyframes to-three {
-        to { transform: rotateY( 90deg ); }
+      @keyframes to-three
+      {
+          to
+          {
+              transform: rotateY( 90deg );
+          }
       }
-      @keyframes to-four {
-        to { transform: rotateY( -90deg ); }
+      @keyframes to-four
+      {
+          to
+          {
+              transform: rotateY( -90deg );
+          }
       }
-      @keyframes to-five {
-        to { transform: rotateX( -90deg ); }
+      @keyframes to-five
+      {
+          to
+          {
+              transform: rotateX( -90deg );
+          }
       }
-      @keyframes to-six {
-        to { transform: rotateY( 180deg ); }
+      @keyframes to-six
+      {
+          to
+          {
+              transform: rotateY( 180deg );
+          }
       }
-      .to-one {
-        animation: to-one 2s forwards linear;
+      .to-one
+      {
+          animation: to-one 2s forwards linear;
       }
-      .to-two {
-        animation: to-two 2s forwards linear;
+      .to-two
+      {
+          animation: to-two 2s forwards linear;
       }
-      .to-three {
-        animation: to-three 2s forwards linear;
+      .to-three
+      {
+          animation: to-three 2s forwards linear;
       }
-      .to-four {
-        animation: to-four 2s forwards linear;
+      .to-four
+      {
+          animation: to-four 2s forwards linear;
       }
-      .to-five {
-        animation: to-five 2s forwards linear;
+      .to-five
+      {
+          animation: to-five 2s forwards linear;
       }
-      .to-six {
-        animation: to-six 2s forwards linear;
+      .to-six
+      {
+          animation: to-six 2s forwards linear;
       }
-      .spin {
-        animation: spin 10s infinite linear;
+      .spin
+      {
+          animation: spin 10s infinite linear;
       }
-      :root {
-        background: #eee;
+      :root
+      {
+          background: #eee;
       }
-      .body {
-        width: 100%;
+      .body
+      {
+          width: 100%;
       }
-      .container {
-        width: 80%;
-        margin: auto;
-        perspective: 800px;
-        text-align: center;
+      .container
+      {
+          width: 80%;
+          margin: auto;
+
+          text-align: center;
+
+          perspective: 800px;
       }
-      .box {
-        background: #ddd;
-        width: 400px;
-        height: 400px;
-        margin: auto;
-        box-shadow: 0 2px 6px #111;
+      .box
+      {
+          width: 400px;
+          height: 400px;
+          margin: auto;
+
+          background: #ddd;
+          box-shadow: 0 2px 6px #111;
       }
-      #js-roll {
-        border-radius: 5px;
-        box-shadow: 0 2px 6px #111;
-        width: 100px;
-        height: 50px;
-        margin-top: 10px;
+      #js-roll
+      {
+          width: 100px;
+          height: 50px;
+          margin-top: 10px;
+
+          border-radius: 5px;
+          box-shadow: 0 2px 6px #111;
       }
-      #js-roll:hover {
-        cursor: pointer;
+      #js-roll:hover
+      {
+          cursor: pointer;
       }
-      .d6 {
-        margin: 40px auto;
-        transform-style: preserve-3d;
-        transition: transform 2s ease-in-out;
-        width: 220px;
-        height: 220px;
+      .d6
+      {
+          width: 220px;
+          height: 220px;
+          margin: 40px auto;
+
+          transition: transform 2s ease-in-out;
+
+          transform-style: preserve-3d;
       }
-      .d6-face {
-        background: #fff;
-        border-radius: 5px;
-        box-shadow: inset 0 0 15px #111;
-        width: 100%;
-        height: 100%;
-        font-size: 50px;
-        text-align: center;
-        display: flex;
-        justify-content:center;
-        align-content:center;
-        flex-direction:column;
-        position: absolute;
+      .d6-face
+      {
+          font-size: 50px;
+
+          position: absolute;
+
+          display: flex;
+          flex-direction: column;
+
+          width: 100%;
+          height: 100%;
+
+          text-align: center;
+
+          border-radius: 5px;
+          background: #fff;
+          box-shadow: inset 0 0 15px #111;
+
+          justify-content: center;
+          align-content: center;
       }
-      #one { /*front*/
-        transform: translateZ(110px);
+      #one
+      {
+          /*front*/
+          transform: translateZ(110px);
       }
-      #six { /*back*/
-        transform: translateZ(-110px) rotateY(180deg);
+      #six
+      {
+          /*back*/
+          transform: translateZ(-110px) rotateY(180deg);
       }
-      #two { /*bottom*/
-        transform: translateZ(-110px) rotateX(270deg);
-        transform-origin: center bottom;
+      #two
+      {
+          /*bottom*/
+          transform: translateZ(-110px) rotateX(270deg);
+          transform-origin: center bottom;
       }
-      #five { /*top*/
-        transform: translateZ( -110px) rotateX(-270deg);
-        transform-origin: center top;
+      #five
+      {
+          /*top*/
+          transform: translateZ( -110px) rotateX(-270deg);
+          transform-origin: center top;
       }
-      #three { /*left*/
-        transform: translateZ(-110px) rotateY(270deg);
-        transform-origin: center left;
+      #three
+      {
+          /*left*/
+          transform: translateZ(-110px) rotateY(270deg);
+          transform-origin: center left;
       }
-      #four { /*right*/
-        transform: translateZ(-110px) rotateY(-270deg);
-        transform-origin: center right;
+      #four
+      {
+          /*right*/
+          transform: translateZ(-110px) rotateY(-270deg);
+          transform-origin: center right;
       }
     </style>
   </head>
